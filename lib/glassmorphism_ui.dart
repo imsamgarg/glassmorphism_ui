@@ -3,58 +3,54 @@ library glassmorphism_ui;
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-///[GlassContainer] Glassmorphism Ui
-///Container with frosted glass effect
-///Completely Customizable ,change blur,border,radius,
-///opacity to achieve desired effect
+///[GlassContainer] Container with frosted glass effect \n
 ///
-/// Note:
-///It Inherit properties of [Container] so expect layout effect as container,
+/// Note:\n
+///It Inherit properties of [Container] so expect layout effect as container,\n
 ///while tinkering with height and width
-
 class GlassContainer extends StatelessWidget {
-  ///[opacity] is used to control the glass frosted effect
-  ///[opacity] should be between 0 and 1
-  ///1 means full opaque
-  ///0 means full transparent
-  ///default value is 0.1
+  ///[opacity] is used to control the glass frosted effect\n
+  ///[opacity] should be between 0 and 1\n
+  ///1 means full opaque\n
+  ///0 means full transparent\n
+  ///default value is 0.1\n
   final double opacity;
 
   ///[Widget] [child]
   final Widget child;
 
-  ///blur intensity
+  ///blur intensity\n
   ///default value is 5
   final double blur;
 
-  /// shadow strength
-  /// default value is 4
-  /// to remove shadow provide value 0
-  /// shadowStrength : 0
+  /// shadow strength\n
+  /// default value is 4\n
+  /// to remove shadow provide value 0\n
+  /// shadowStrength : 0\n
   final double shadowStrength;
 
-  ///Border Radius
-  ///example:
-  ///borderRadius: BorderRadius.circular(10),
-  ///default value is same as example
-  ///to remove border use [BorderRadius.zero],
+  ///Border Radius\n
+  ///example:\n
+  ///borderRadius: BorderRadius.circular(10),\n
+  ///default value is same as example\n
+  ///to remove border use [BorderRadius.zero],\n
   final BorderRadiusGeometry borderRadius;
 
-  ///[GlassContainer] Height in [double]
+  ///[GlassContainer] Height in [double]\n
   ///no default height
   final double height;
 
-  ///[GlassContainer] Width in [double]
+  ///[GlassContainer] Width in [double]\n
   ///no default width
   final double width;
 
-  ///[border] example
-  ///Border.all(
-  ///   color: Colors.white.withOpacity(0.3),
-  ///   width: 0.3,
-  ///   style: BorderStyle.solid,
+  ///[border] example\n
+  ///Border.all(\n
+  ///   color: Colors.white.withOpacity(0.3),\n
+  ///   width: 0.3,\n
+  ///   style: BorderStyle.solid,\n
   ///),
-  ///default is same as above example
+  ///default is same as above example\n
   final BoxBorder border;
 
   const GlassContainer(
