@@ -1,14 +1,27 @@
-# glassmorphism
+# glassmorphism_ui 
 
-Glassmorphism Ui
+Create glassmorphic design using GlassContainer having frosted glass effect.
 
 ## Getting Started
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+Create beautiful glassmorphic designs using this package,GlassContainer Widget provided by this package is completely customizable,change Container's opacity,blur,border,radius etc.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+![alt text](./lib/glass.jpg)
+
+
+## GlassContainer example
+```
+GlassContainer(
+      height: 130,
+      blur: 3,
+      shadowStrength: 10,
+      opacity: 0.2,
+      width: 230,
+      //this below code to remove border
+      border: Border.fromBorderSide(BorderSide.none),
+      borderRadius: BorderRadius.circular(10),
+      child: Center(child: Text("Glass Container"),),
+),
+```
+
+
