@@ -1,4 +1,4 @@
-library glassmorphism;
+library glassmorphism_ui;
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
