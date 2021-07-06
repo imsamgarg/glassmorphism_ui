@@ -14,7 +14,6 @@ Create beautiful glassmorphic designs using this package,GlassContainer Widget p
 Add this in to your pubspec.yaml
 
 ```bash
-  dependencies:
   glassmorphism_ui: ^0.1.0
 ```
 
@@ -30,7 +29,7 @@ Import it
   import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 ```
 
-## GlassContainer example
+## Example
 ```
 GlassContainer(
       height: 130,
