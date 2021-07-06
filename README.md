@@ -6,10 +6,30 @@ Create glassmorphic design using GlassContainer having frosted glass effect.
 
 Create beautiful glassmorphic designs using this package,GlassContainer Widget provided by this package is completely customizable,change Container's opacity,blur,border,radius etc.
 
+
 ![alt text](./lib/glass.jpg)
 
+## Installation 
 
-## GlassContainer example
+Add this in to your pubspec.yaml
+
+```bash
+  glassmorphism_ui: ^0.1.0
+```
+
+Go to the project directory and run
+
+```bash
+  flutter pub get
+```
+
+Import it
+
+```bash
+  import 'package:glassmorphism_ui/glassmorphism_ui.dart';
+```
+
+## Example
 ```
 GlassContainer(
       height: 130,
