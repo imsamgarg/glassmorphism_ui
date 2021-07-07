@@ -5,8 +5,8 @@ author: Smile garg<imsmilegarg@gmail.com>
 homepage: https://github.com/imsmilegarg/glassmorphism_ui.git
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:

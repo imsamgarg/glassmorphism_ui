@@ -1,69 +1,87 @@
+///Create beautiful Glassmorphic ui using components provided by this package
 library glassmorphism_ui;
 
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-///[GlassContainer] Container with frosted glass effect \n
+///[GlassContainer] Container with frosted glass effect
 ///
-/// Note:\n
-///It Inherit properties of [Container] so expect layout effect as container,\n
+///Note:
+///
+///It Inherit properties of [Container] so expect layout effect as container,
 ///while tinkering with height and width
 class GlassContainer extends StatelessWidget {
-  ///[opacity] is used to control the glass frosted effect\n
-  ///[opacity] should be between 0 and 1\n
-  ///1 means full opaque\n
-  ///0 means full transparent\n
-  ///default value is 0.1\n
+  ///```
+  ///opacity is used to control the glass frosted effect
+  ///
+  ///value should be in between 0 and 1
+  ///
+  ///--1 means fully opaque
+  ///--0 means fully transparent
+  ///
+  ///default value : 0.1
+  ///```
   final double opacity;
 
   ///[Widget] [child]
-  final Widget child;
+  final Widget? child;
 
-  ///blur intensity\n
-  ///default value is 5
+  ///```
+  ///blur intensity
+  ///default value : 5
+  ///```
   final double blur;
 
-  /// shadow strength\n
-  /// default value is 4\n
-  /// to remove shadow provide value 0\n
-  /// shadowStrength : 0\n
+  ///```
+  /// shadow strength
+  ///
+  /// default value : 4
+  /// ```
   final double shadowStrength;
 
-  ///Border Radius\n
-  ///example:\n
-  ///borderRadius: BorderRadius.circular(10),\n
-  ///default value is same as example\n
-  ///to remove border use [BorderRadius.zero],\n
-  final BorderRadiusGeometry borderRadius;
+  ///```
+  ///borderRadius [BorderRadiusGeometry]
+  ///
+  ///example:
+  ///BorderRadius.circular(10),
+  ///
+  /// default value : BorderRadius.circular(10),
+  ///
+  /// --to remove border use [BorderRadius.zero],
+  ///```
+  final BorderRadiusGeometry? borderRadius;
 
-  ///[GlassContainer] Height in [double]\n
-  ///no default height
-  final double height;
+  ///[GlassContainer] Height
+  final double? height;
 
-  ///[GlassContainer] Width in [double]\n
-  ///no default width
-  final double width;
+  ///[GlassContainer] Width
+  final double? width;
 
-  ///[border] example\n
-  ///Border.all(\n
-  ///   color: Colors.white.withOpacity(0.3),\n
-  ///   width: 0.3,\n
-  ///   style: BorderStyle.solid,\n
+  ///```
+  ///border [BoxBorder]
+  ///
+  ///example:
+  ///Border.all(
+  ///   color: Colors.white.withOpacity(0.3),
+  ///   width: 0.3,
+  ///   style: BorderStyle.solid,
   ///),
-  ///default is same as above example\n
-  final BoxBorder border;
+  ///
+  ///default is same as example
+  ///```
+  final BoxBorder? border;
 
-  const GlassContainer(
-      {Key key,
-      this.opacity = 0.05,
-      this.child,
-      this.blur = 5,
-      this.border,
-      this.height,
-      this.width,
-      this.borderRadius,
-      this.shadowStrength = 4})
-      : super(key: key);
+  const GlassContainer({
+    Key? key,
+    this.opacity = 0.05,
+    this.child,
+    this.blur = 5,
+    this.border,
+    this.height,
+    this.width,
+    this.borderRadius,
+    this.shadowStrength = 4,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +99,8 @@ class GlassContainer extends StatelessWidget {
         ),
         width: width,
         child: ClipRRect(
-          borderRadius: borderRadius ?? BorderRadius.circular(10),
+          borderRadius:
+              borderRadius as BorderRadius? ?? BorderRadius.circular(10),
           child: BackdropFilter(
             filter: ImageFilter.blur(
               sigmaX: blur,
@@ -90,7 +109,7 @@ class GlassContainer extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: borderRadius ?? BorderRadius.circular(10),
-                color: Colors.grey[100].withOpacity(opacity),
+                color: Colors.grey[100]!.withOpacity(opacity),
               ),
               child: child,
             ),
@@ -113,7 +132,10 @@ class _PaintShadow extends CustomPainter {
   }
 
   Paint customPainter(
-      {double blurStrength, Color color, double opacity, double strokeWidth}) {
+      {required double blurStrength,
+      required Color color,
+      double? opacity,
+      required double strokeWidth}) {
     return Paint()
       ..style = PaintingStyle.stroke
       ..color = color.withOpacity(0.24)
