@@ -14,7 +14,7 @@ Create beautiful glassmorphic designs using this package,GlassContainer Widget p
 Add this in to your pubspec.yaml
 
 ```bash
-  glassmorphism_ui: ^0.1.0
+  glassmorphism_ui: ^0.2.0
 ```
 
 Go to the project directory and run
@@ -31,17 +31,21 @@ Import it
 
 ## Example
 ```
-GlassContainer(
+  GlassContainer(
       height: 130,
       blur: 3,
       shadowStrength: 10,
       opacity: 0.2,
       width: 230,
-      //this below code to remove border
+      //--code to remove border
       border: Border.fromBorderSide(BorderSide.none),
       borderRadius: BorderRadius.circular(10),
-      child: Center(child: Text("Glass Container"),),
-),
+      child: Center(
+        child: Text(
+          "Glass Container",
+        ),
+      ),
+    ),
 ```
 
 

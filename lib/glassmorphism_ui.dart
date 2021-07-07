@@ -47,7 +47,6 @@ class GlassContainer extends StatelessWidget {
   ///
   /// default value : BorderRadius.circular(10),
   ///
-  /// --to remove border use [BorderRadius.zero],
   ///```
   final BorderRadiusGeometry? borderRadius;
 
