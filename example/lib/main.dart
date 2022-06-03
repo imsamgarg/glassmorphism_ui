@@ -26,49 +26,47 @@ class MyHomePage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
             colors: [
-              Colors.red,
-              Colors.green,
+              Colors.blue,
+              Colors.pink,
             ],
           ),
+          // color: Colors.red,
         ),
         child: Center(
           child: Stack(
             children: [
-              GlassContainer(
-                height: 200,
-                width: 200,
-                // blur: 1,
-                // opacity: 0.2,
-                // shadowStrength: 2,
+              Container(
                 child: Center(
                   child: Text(
-                    "Hello World",
+                    "Glassmorphism",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                    ),
                   ),
                 ),
               ),
-              Positioned(
-                top: 25,
-                left: 25,
+              Center(
                 child: GlassContainer(
-                  height: 50,
-                  width: 50,
-                  // blur: 1,
-                  // opacity: 0.2,
-                  // shadowStrength: 2,
-                  // child: Center(),
-                ),
-              ),
-              Positioned(
-                top: 15,
-                left: 15,
-                child: GlassContainer(
-                  height: 50,
-                  width: 50,
-                  blur: 1,
-                  // opacity: 0.2,
-                  // shadowStrength: 2,
-                  // child: Center(),
+                  height: 200,
+                  width: 200,
+                  blur: 5,
+                  opacity: 0.4,
+                  color: Colors.white.withOpacity(0.3),
+                  // gradient: LinearGradient(
+                  //   begin: Alignment.topLeft,
+                  //   end: Alignment.bottomRight,
+                  //   colors: [
+                  //     Colors.white.withOpacity(0.2),
+                  //     Colors.blue.withOpacity(0.3),
+                  //   ],
+                  // ),
+                  border: Border.fromBorderSide(BorderSide.none),
+                  // shadowStrength: 0,
+                  // shadowColor: Colors.white.withOpacity(0.24),
                 ),
               ),
             ],
