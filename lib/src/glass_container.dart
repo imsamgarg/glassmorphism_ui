@@ -75,6 +75,9 @@ class GlassContainer extends StatelessWidget {
   ///```
   final BoxBorder? border;
 
+  /// Container's shape
+  final BoxShape shape;
+
   /// [Gradient] gradient
   ///
   /// [color] will be ignored if gradient is set.
@@ -90,7 +93,7 @@ class GlassContainer extends StatelessWidget {
     super.key,
     this.opacity = 0.05,
     this.child,
-    this.blur = 5,
+    this.blur = 2,
     this.border,
     this.height,
     this.width,
@@ -99,6 +102,7 @@ class GlassContainer extends StatelessWidget {
     this.shadowColor = const Color(0x3D333333),
     this.color,
     this.gradient,
+    this.shape = BoxShape.rectangle,
   });
 
   @override
@@ -110,10 +114,33 @@ class GlassContainer extends StatelessWidget {
           color: Colors.white.withOpacity(0.3),
           width: 0.3,
         );
+
+    Widget _child = DecoratedBox(
+      decoration: BoxDecoration(
+        shape: shape,
+        color: _color,
+        borderRadius: shape == BoxShape.circle ? null : _borderRadius,
+        gradient: gradient,
+      ),
+      child: child,
+    );
+
+    if (blur > 0) {
+      _child = ClipRRect(
+        borderRadius: _borderRadius,
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
+          child: _child,
+        ),
+      );
+    }
+
     return CustomPaint(
       painter: HollowShadowPainter(
+        shape: shape,
         shadowStrength: shadowStrength,
         shadowColor: shadowColor,
+        borderRadius: _borderRadius,
       ),
       child: Container(
         width: width,
@@ -122,18 +149,7 @@ class GlassContainer extends StatelessWidget {
           borderRadius: _borderRadius,
           border: _border,
         ),
-        child: ClipRRect(
-          borderRadius: _borderRadius,
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: _color,
-                gradient: gradient,
-              ),
-            ),
-          ),
-        ),
+        child: _child,
       ),
     );
   }

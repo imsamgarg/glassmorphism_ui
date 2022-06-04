@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
+///Render Shadow around the container
 class HollowShadowPainter extends CustomPainter {
   HollowShadowPainter({
+    required this.shape,
+    required this.borderRadius,
     required this.shadowColor,
     this.shadowStrength = 1,
   });
 
   final double shadowStrength;
   final Color shadowColor;
-  static double convertRadiusToSigma(double radius) {
+  final BoxShape shape;
+  final BorderRadius borderRadius;
+
+  static double _convertRadiusToSigma(double radius) {
     return radius * 0.57735 + 0.5;
   }
 
@@ -23,14 +29,27 @@ class HollowShadowPainter extends CustomPainter {
       ..strokeWidth = strokeWidth
       ..maskFilter = MaskFilter.blur(
         BlurStyle.normal,
-        convertRadiusToSigma(blurStrength),
+        _convertRadiusToSigma(blurStrength),
       );
   }
 
   @override
   void paint(Canvas canvas, Size size) {
     if (shadowStrength == 0) return;
-    final RRect rrect = RRect.fromRectAndRadius(
+
+    if (shape == BoxShape.circle) {
+      return canvas.drawCircle(
+        Offset(size.width / 2, size.height / 2),
+        size.width / 2 + shadowStrength / 2,
+        customPainter(
+          color: shadowColor,
+          blurStrength: 20,
+          strokeWidth: shadowStrength,
+        ),
+      );
+    }
+
+    final RRect rrect = RRect.fromRectAndCorners(
       Rect.fromPoints(
         Offset(-shadowStrength / 2, -shadowStrength / 2),
         Offset(
@@ -38,7 +57,10 @@ class HollowShadowPainter extends CustomPainter {
           size.height + shadowStrength / 2,
         ),
       ),
-      const Radius.circular(10),
+      bottomLeft: borderRadius.bottomLeft,
+      bottomRight: borderRadius.bottomRight,
+      topLeft: borderRadius.topLeft,
+      topRight: borderRadius.topRight,
     );
 
     canvas.drawRRect(
@@ -60,9 +82,16 @@ class HollowShadowPainter extends CustomPainter {
 
     return other is HollowShadowPainter &&
         other.shadowStrength == shadowStrength &&
-        other.shadowColor == shadowColor;
+        other.shadowColor == shadowColor &&
+        other.shape == shape &&
+        other.borderRadius == borderRadius;
   }
 
   @override
-  int get hashCode => shadowStrength.hashCode ^ shadowColor.hashCode;
+  int get hashCode {
+    return shadowStrength.hashCode ^
+        shadowColor.hashCode ^
+        shape.hashCode ^
+        borderRadius.hashCode;
+  }
 }
